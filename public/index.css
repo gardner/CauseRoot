@@ -1,5 +1,8 @@
-body
-{
+body, html {
+	height: 100%;
+	}
+
+body {
     background-color: #5d5d5d;
     /*width: 100%;
     height: 100%;
@@ -10,32 +13,37 @@ body
 }
 
 #content_wrapper {
-    margin: 100px auto 0px auto;
+    margin: 0px auto 0px auto;
     width: 1000px;
     background: #ffffff;
     background-image:url('World.jpg');
     background-repeat:no-repeat;
     background-position: right top;
+    height: auto;
+    min-height: 100%;
+    
+
 }
 
 
 #content_inner_wrapper {
     padding: 52px 52px 16px 52px;
-    border: 1px solid #000000;
+    border: 0px solid #000000;
 }
 
 #logo_wrapper {
     margin-bottom: 20px;
+	margin-left: -1%;
+
 }
 
 .signup_wrapper {
-
-    position: absolute; 
-    background:#F7941E;
-    height: 27px;
+    float: right;
+    background: #F7941E;
     top: 101px;
-    left: 791px;
     text-align: center;
+    margin-right: 50px;
+    margin-top: 0px;
 }
 
 .sgnuptxt { 
@@ -45,6 +53,31 @@ body
     position:relative;
     font-size: 16px;
 }
+
+.email_submit_line td {
+	width: 400px;
+	vertical-align:middle;
+	}
+	
+#invalid_message {
+	display: inline-block;
+	padding: 0px 6px;
+	font-size: 12px;
+	color: red;
+	}
+#already_subscribed_message {
+	display: inline-block;
+	padding: 0px 6px;
+	font-size: 12px;
+	color: red;
+	}
+	
+#confirm_message {
+	display: inline-block;
+	padding: 0px 6px;
+	font-size: 12px;
+	color: #F7941E;
+	}
 
 #hdr1 {
      
@@ -60,11 +93,37 @@ body
     font-size: 16px;
     font-weight: 300;
     color:black;
-    width: 586px;
+    /*width: 586px;*/
+    width: 590px;
     line-height: 1.4;
     margin-bottom: 12px;
 }
 
+.singular_page_message {
+    font-size: 28px;
+    font-weight: 300;
+    color: #F7941D;
+    /*width: 586px;*/
+    width: 590px;
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+.singular_page_message_2 {
+    font-size: 16px;
+    font-weight: 300;
+    color: black;
+    /*width: 586px;*/
+    width: 590px;
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+.thankyou_message {
+	margin-top: 45px;
+
+	}
+	
+	
 .cta {
     font-size: 16px;
     font-style:bold;
@@ -96,38 +155,49 @@ body
     font-size: 12px;
     font-weight: 500;
     color:#58595A;
-    /*margin-bottom: 10px;*/
+    margin-bottom: 14px;
 }
 
 .emails
 {
-    margin-top: 8px;
+    margin-top: 14px;
     width: 450px;
+    color:#909090;
+}
 
+.email_responses {
+    padding: 0px 28px;
+}
+
+#message {
+    font-size: 13px;
+    color: #F7941D;
+}    
+    
+.button
+{
+	padding: 0em 0px 0.25em;
+	position: absolute;
+    border: 0px;
+    background: #F7941D;
+    color: white;
+    width: 93px;
+    height: 24px;
+    font-size: 14px;
+    cursor: pointer;
 }
 
 .inputbox
 {
-    padding:0.2em 0 0em 16px;
+    padding: 0em 0 0em 16px;
     width: 285px;
     height: 24px;
-    border: 1px;
-    background: #E3E3E3;
-    color: #444444;
-}
-
-.button
-{
     border: 0px;
-    background: #F7941D;
-    color: white;
-    height: 27px;
-    width: 93px;
-    font-size: 14px;
+    background: #E3E3E3;
+    color: #A0A0A0;
 }
-
-.arrow1
-{
+		
+.arrow1 {
     position: absolute;
     left: 115px;
     top: 647px;
@@ -142,19 +212,38 @@ body
     opacity: 0;
 }
 
-#footer_wrapper
-{
-    margin-top: 50px;
+
+#footer_wrapper {
     width: 100%;
+	text-align: center;
+	height: 30px;
+	position: relative;
+	z-index: 10;
+	clear: both;
+	margin-top: -30px;
+
+
+	
 }
 
 #footer_inner_wrapper {
     color:#58595A;
     text-align: center;
     font-size: 12px;
-    
+
 }
 
+
+a {
+	color: #F7941D;
+	text-decoration: none;
+	cursor: pointer;
+	}
+	
+a:hover {
+	color: #7452FF;
+	}
+		
 .dropbox_title_wrapper {
     width: 100%;
     margin-top: 10px;
@@ -207,6 +296,7 @@ body
 
 }
 
+
 .dots{
     letter-spacing: 7px;
     max-width: 100%;
@@ -221,7 +311,8 @@ body
 .info_text_wrapper {
     display: none;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 300;
+    width: 590px;
     line-height: 1.4;
     margin-bottom: 25px;
 }
@@ -242,9 +333,8 @@ body
     /*background-position: right top;*/
 }
 
+.teamSelector { cursor: pointer; }
+
 .clear_div {
-/* 
-    clear: both;
-    width: 100%;
- */
+	height: 30px;
 }

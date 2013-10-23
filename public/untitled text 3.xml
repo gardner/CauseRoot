@@ -1,0 +1,39 @@
+
+
+GameData:
+
+{:Tag=>{:Entry=>1,:User_ID=>1}}=>{:Question=>1, :Problems=>[4, 7], :Response=>{:Answer=>"A", :Same=>0, :Skip=>0}}
+
+User
+    1
+Question
+    String
+    # of Problems
+Problems
+    1 or more
+Response
+    Either answer or same or skip
+    
+    rails g scaffold GameData user_id:integer question_id:integer response_id:integer 
+    rails g scaffold Question question:string prob_count:integer
+    rails g scaffold Response answer:integer same:boolean skip:boolean
+    rails g model cause:text
+    rails g model effect:text
+    rails g scaffold Issue problem:text cause_id:integer effect_id:integer
+    
+    
+    
+    
+<form method="POST" action="/subscriptions" class="emails">
+    <input type="text" class="inputbox" name="subscription">
+    <input type="submit" value="Sign up" class="button" />
+</form>
+
+    
+<form method="post" action="http://scripts.dreamhost.com/add_list.cgi">
+    <input type="hidden" name="list" value="info@causeroot.org" />
+    <input type="hidden" name="domain" value="causeroot.org" />
+    <input type="hidden" name="url" value="http://causeroot.org" />
+    <input type="text" class="inputbox" name="email">
+    <input type="submit" name="submit" value="Sign up" class="button" />
+</form>

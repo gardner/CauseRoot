@@ -16,6 +16,8 @@ var allUsers = false;
 d3.csv("/graphs.csv", createSvgElements);
 
 function toggleGraph() {
+    $("#all_data").toggleClass("graph_toggle_highlighted");
+    $("#my_data").toggleClass("graph_toggle_highlighted");
     if (allUsers) {
         graphDraw("/graphs.csv");
         allUsers = false;
@@ -51,12 +53,14 @@ function createSvgElements(data) {
             .domain(d3.extent(data, function(d) { return yval(d); }))
             .range([height - margin.top - margin.bottom, 0]), 1);
 
+        svg.append("g").attr("class", "circles");
+        svg.append("g").attr("class", "text");
         // DATA JOIN
-        var circles = svg.selectAll("circle")
+        var circles = svg.select('.circles').selectAll("circle")
             .data(data, function(d) {return idFunc(d)});
 
-        var text = svg.selectAll("text")
-            .data(data, key);
+        var text = svg.select('.text').selectAll("text")
+            .data(data, function(d) {return idFunc(d)+'t'});
 
         // UPDATE
         // Update old data
@@ -69,7 +73,6 @@ function createSvgElements(data) {
                 }
                 return txt;
             })
-            .transition().duration(750)
             .attr("x", function(d) {return x(xval(d));})
             .attr("y", function(d) {return y(yval(d));})
             .attr("dx", function(d) {return 0.75*rad(d);})
@@ -88,13 +91,12 @@ function createSvgElements(data) {
             .attr("fill", function(d) { return cinterp(d.Complexity);});
 
         // ENTER: Create new elements as needed.
-        circles.enter().append("svg:g")
-            .attr("class", "circles").append("svg:circle")
+        circles.enter().insert("svg:circle")
             .on("mouseover", function(){
-                d3.selectAll(".text").select('#'+this.id+'t')
+                d3.selectAll(".bckg").select('#'+this.id+'t')
                     .attr("visibility","visible");})
             .on("mouseout", function(){
-                d3.selectAll(".text").select('#'+this.id+'t')
+                d3.selectAll(".bckg").select('#'+this.id+'t')
                     .attr("visibility","hidden");})
             .transition().duration(750)
             .attr("class", "dot")
@@ -103,15 +105,7 @@ function createSvgElements(data) {
             .attr("cy", function(d) { return y(yval(d)); })
             .attr("r", function(d) { return rad(d); })
             .attr("fill", function(d) { return cinterp(d.Complexity);});
-        text.enter().append("svg:g")
-            .attr("class", "text");
-        // ENTER + UPDATE
-        // Appending to the enter selection expands the update selection to include
-        // entering elements; so, operations on the update selection after appending to
-        // the enter selection will apply to both entering and updating nodes.
-
-// Text for individual problem data points
-        text.append("svg:text")
+        text.enter().append("svg:text")
             .attr("class", "nodeText")
             .attr("id", function(d){return idFunc(d)+'t';})
             .attr("x", function(d) {return x(xval(d));})
@@ -137,7 +131,7 @@ function createSvgElements(data) {
         // Remove old elements as needed.
         circles.exit().remove();
         text.exit().remove();
-    }
+    };
 
     createLegend(canvas);
     this.update(svg, data);
